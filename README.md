@@ -4,6 +4,8 @@ AI tools now write code faster than people can review it. ReviewLane helps revie
 
 PR → classify every file → score risk → summarize only the behavioral changes
 
+**Live demo:** https://reviewlane-cxbnwen2b9un3tpq5lbasq.streamlit.app/
+
 ## Web demo
 
 ReviewLane ships with a small web app. Pick an example pull request, or paste a GitHub link or a diff, and see on one screen what needs a human and what does not.
