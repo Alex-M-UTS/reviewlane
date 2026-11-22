@@ -1,0 +1,10 @@
+{
+  "repos": ["pallets/flask", "psf/requests", "encode/httpx", "Textualize/rich"],
+  "changes": 4722,
+  "changed_lines": 416118,
+  "safe_to_skim_pct": 31.1,
+  "behavioral_pct": 46.3,
+  "prs_with_no_behavioral_lines": 2664,
+  "prs_with_no_behavioral_pct": 56.4,
+  "note": "Measured by `reviewlane build-dataset` on each repo's first-parent history; skim = formatting, docstring-only, rename, docs, generated."
+}

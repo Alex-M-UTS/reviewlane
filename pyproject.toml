@@ -1,0 +1,31 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "reviewlane"
+version = "0.1.0"
+description = "Risk-based PR triage and behavioral-change summaries to cut the code review bottleneck."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+dependencies = [
+    "unidiff>=0.7",
+    "httpx>=0.27",
+]
+
+[project.optional-dependencies]
+llm = ["anthropic>=0.40"]
+ml = ["scikit-learn>=1.4", "numpy>=1.26"]
+ui = ["streamlit>=1.40"]
+dev = ["pytest>=8", "scikit-learn>=1.4", "numpy>=1.26", "anthropic>=0.40", "streamlit>=1.40"]
+
+[project.scripts]
+reviewlane = "reviewlane.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/reviewlane"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

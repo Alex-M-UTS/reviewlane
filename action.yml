@@ -1,0 +1,33 @@
+name: ReviewLane
+description: Risk-based PR triage and behavioral-change summaries to cut the code review bottleneck.
+author: you
+branding:
+  icon: git-pull-request
+  color: blue
+
+inputs:
+  github_token:
+    description: Token used to read the PR and post the comment.
+    required: true
+    default: ${{ github.token }}
+  anthropic_api_key:
+    description: Optional. Enables LLM-written review focus; offline summary is used without it.
+    required: false
+  model:
+    description: Anthropic model for the summary.
+    required: false
+    default: claude-haiku-5-5
+  apply_label:
+    description: Add a risk:low/medium/high label to the PR.
+    required: false
+    default: "true"
+
+runs:
+  using: docker
+  image: Dockerfile
+  args: ["action"]
+  env:
+    GITHUB_TOKEN: ${{ inputs.github_token }}
+    ANTHROPIC_API_KEY: ${{ inputs.anthropic_api_key }}
+    REVIEWLANE_MODEL: ${{ inputs.model }}
+    REVIEWLANE_LABEL: ${{ inputs.apply_label }}
