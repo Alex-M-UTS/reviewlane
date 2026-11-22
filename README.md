@@ -17,12 +17,6 @@ reviewlane ui          # opens http://localhost:8501
 
 It is one page: a short description of the problem and the solution, a **Try it** section (four built-in examples that run through the real classifier and scorer, plus GitHub link and paste-a-diff modes), and a short, honest **How well does it work?** summary of the evaluation below.
 
-### Put it online so anyone can click it (free)
-
-1. Push this repo to GitHub as a public repository.
-2. Go to [share.streamlit.io](https://share.streamlit.io), sign in with GitHub, choose **New app**, pick the repo and branch, and set the main file to `streamlit_app.py`.
-3. Optional: in **Advanced settings → Secrets** add `ANTHROPIC_API_KEY = "sk-ant-..."` to turn on AI-written review notes. Example notes are cached and each visitor session is capped at 5 AI calls, so cost stays small.
-4. Put the app link at the top of this README and on your resume.
 
 ### Free AI notes with Ollama (no API key)
 
@@ -31,8 +25,6 @@ The app and CLI use a model running on your own computer through [Ollama](https:
 1. Install Ollama from [ollama.com/download](https://ollama.com/download).
 2. Download a model once: `ollama pull llama3.2` (about 2 GB, fine on 8 GB of RAM) or `ollama pull qwen2.5-coder:7b` (about 4.7 GB, better at code).
 3. Start the app as usual with `reviewlane ui`. It finds Ollama on its own.
-
-Backend order is Ollama, then the Anthropic API if `ANTHROPIC_API_KEY` is set, then a plain offline summary. Force one with `REVIEWLANE_LLM=ollama|anthropic|none`, and pick a model with `REVIEWLANE_OLLAMA_MODEL`. A public Streamlit link cannot reach an Ollama on your laptop, so the hosted version shows plain summaries; demo the AI notes live from your own machine. Small local models make more mistakes than large hosted ones, which is why the notes are labelled and the diff is always shown next to them.
 
 ## The problem
 
@@ -132,7 +124,3 @@ src/reviewlane/
 streamlit_app.py  the web demo (one page)
 tests/            50 tests incl. a temp-git-repo SZZ test, a mocked GitHub API and headless UI tests
 ```
-
-## Resume bullet (use only numbers you have reproduced)
-
-> Built ReviewLane, a GitHub Action that triages PRs by risk and summarizes behavioral changes. AST-based classification let reviewers skip 31% of changed lines across 4,700 PRs from 4 open-source Python repos; a transparent risk score flagged 43% of later-buggy PRs in its top decile (4.3x lift) on a time-split holdout, comparable to a strong size-only baseline, with limitations documented.
