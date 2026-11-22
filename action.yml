@@ -1,6 +1,6 @@
 name: ReviewLane
 description: Risk-based PR triage and behavioral-change summaries to cut the code review bottleneck.
-author: you
+author: Alex-M-UTS
 branding:
   icon: git-pull-request
   color: blue
